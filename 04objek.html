@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 3. Constructor Function => membuat objek dengan menggunakan fungsi construktor; hampir sama dengan fungsi declaration nomor 2, namun tanpa menginisiasi objek di dalam fungsi 'Pegawai', sehingga tidak menggunakan 'return' di dalam function tsb, namun dalam menginisiasi variabel, perlu menggunakan keyword 'new'
+        function Pegawai(nama, energi) {
+            this.nama = nama;
+            this.energi = energi;
+            this.makan = function (porsi) {
+                this.energi += porsi;
+                console.log(`Halo ${this.nama}, Selamat makan!`);
+            }
+            // tidak seperti fungsi declaration, disini tidak perlu menggunakan 'return', karena pada function Pegawai diatas tidak menginisiasi objek
+        }
+
+        // buat objek pegawainya menggunakan keyword 'new':
+        let edho = new Pegawai('edho', 20);
+        let nurul = new Pegawai('nurul', 25);
+        // lalu variabel tsb dapat dipanggil di console browser
+    </script>
+</body>
+
+</html>

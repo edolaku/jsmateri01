@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // function declaration sama dengan pada file 02objek.html, namun dengan menggunakan fungsi yg tidak disatukan pada deklarasi objek, dengan ini kita dapat menghubungkan antara objek pegawai dengan objek methodPgw:
+
+        const methodPgw = {
+            makan: function (porsi) {
+                this.energi += porsi;
+                console.log(`Halo ${this.nama}, selamat makan!`);
+            },
+
+            main: function (jam) {
+                this.energi -= jam;
+                console.log(`Halo ${this.nama}, selamat main!`);
+            },
+
+            tidur: function (jam) {
+                this.energi += jam * 2;
+                console.log(`Halo ${this.nama}, selamat tidur!`);
+            }
+        }
+
+
+
+        function Pegawai(nama, energi) {
+            let pegawai = Object.create(
+                methodPgw
+            ); //sama seperti membuat object dengan {}, namun dengan menggunakan Object.create() dapat memasukkan method diatas
+            pegawai.nama = nama;
+            pegawai.energi = energi;
+            // harus menggunakan return agar dimasukkan ke variabel 'pegawai'
+            return pegawai;
+        }
+
+        // buat objek pegawainya:
+        let edho = Pegawai('edho', 20);
+        let nurul = Pegawai('nurul', 25);
+    </script>
+</body>
+
+</html>

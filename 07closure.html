@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // Closure
+
+        let add = (function () { //kurung buka kurung tutup merupakan immediately invoke function, digunakan untuk memanggil secara otomatis fungsi
+            let counter = 0;
+            return function () {
+                return ++counter;
+            }
+        })()
+
+        // counter ini tidak akan terganggu dengan counter closure di atas
+        counter = 100
+
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+        console.log(counter);
+    </script>
+</body>
+
+</html>
+
+1390018450639
