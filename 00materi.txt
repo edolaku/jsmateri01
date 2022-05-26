@@ -1,0 +1,1 @@
+this => berhubungan dan mengacu pada objek
