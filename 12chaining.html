@@ -10,18 +10,24 @@
   <body>
     <script>
       // filter, map, reduce, find, filter, dll adalah prototype dari tipe data ARRAY. Array disini juga bermacam-macam, dapat berupa array of number; array of string; array of object
-      // ==============REDUCE==============
-      // Map digunakan melakukan sesuatu terhadap SELURUH elemen pada array-nya
+      // ==============METHOD CHAINING==============
+      // Digunakan untuk menggabungkan method dalam satu baris kode
 
       const angka = [-3, -2, -20, 0, -24, 4, 90, 5, 4];
 
-      // reduce memiliki 2 argumen; accumulator (hasil dari prosesnya) dan currentValue (elemen array yg sedang dilooping)
-      // pada kode reduce dibawah, yg terjadi adalah seperti ini:
-      // -3 + -2 + -20 + 0 + -24 + 4 + 90 + 5 + 4
-      // pada 0 tersebut dibawah, itu adalah nilai awal, namun jika tidak dituliskan, maka default dari nilai awal tersebut adalah 0
-      const newAngka = angka.reduce(function (a, b, 0) {
-        return a + b;
-      });
+      // cari angka > 5
+      // kalikan 3
+      // jumlahkan
+      const newAngka = angka
+        .filter(function (a) {
+          return a >= 5;
+        })
+        .map(function (a) {
+          return a * 3;
+        })
+        .reduce(function (acc, cur) {
+          return acc + cur;
+        });
       console.log(newAngka);
       console.log(angka);
     </script>
