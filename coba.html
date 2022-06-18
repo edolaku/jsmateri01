@@ -4,101 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Filter, Map & Reduce</title>
+    <title>Tagged Template Literals</title>
   </head>
 
   <body>
-    <h3>My Videos</h3>
-    <ul>
-      <li data-duration="15:27">Teknik Pomodoro</li>
-      <li data-duration="11:18">
-        JAVASCRIPT LANJUTAN | Higher Order Functions
-      </li>
-      <li data-duration="21:40">
-        JAVASCRIPT LANJUTAN | This pada Arrow Function
-      </li>
-      <li data-duration="19:38">Website Penipu</li>
-      <li data-duration="12:10">JAVASCRIPT LANJUTAN | Arrow Function</li>
-      <li data-duration="20:43">JAVASCRIPT LANJUTAN | Closure</li>
-      <li data-duration="14:30">#TANYAPADIKA EP005</li>
-      <li data-duration="26:38">JAVASCRIPT LANJUTAN | Execution Context</li>
-      <li data-duration="17:33">JAVASCRIPT LANJUTAN | Prototype</li>
-      <li data-duration="10:39">JAVASCRIPT LANJUTAN | Object.create()</li>
-      <li data-duration="17:31">JAVASCRIPT LANJUTAN | Object (Revisited)</li>
-      <li data-duration="14:25">5 Tips Bertanya Ketika Error</li>
-    </ul>
-
-    <h3>My Playlist</h3>
-    <ol>
-      <li>
-        <h4>Javascript Lanjutan</h4>
-        <p>Jumlah Video : <span class="jumlah-video"></span></p>
-        <p>Total Durasi : <span class="total-durasi"></span></p>
-      </li>
-    </ol>
-
+    
     <script>
-      // =============ambil semua elemen video=============
-      // ambil li yg memiliki "data-duration"; Array.from berfungsi mengubah menjadi array, jika tanpa method tersebut hasilnya akan berupa node list (bukan array)
-      const videos = Array.from(document.querySelectorAll("[data-duration]"));
-      console.log(videos);
+      let nama = "wapek";
+      let umur = "31";
 
-      // =============ambil video hanya yg 'javascript lanjutan'=============
-      let jsLanjut = videos
-        .filter(function (video) {
-          return video.textContent.includes("JAVASCRIPT LANJUTAN");
-        })
+      // parameter text merupakan string yang ada pada 'str', sedangkan parameter ...values akan menampilkan argumen yg ada pada 'str'
+      function coba(text, ...values) {
+        return values;  
+      }
 
-        // =============ambil durasi masing2 video=============
-        // map dengan mengambil data duration nya saja
-        .map(function (item) {
-          return item.dataset.duration;
-        })
-
-        // =============ubah durasi menjadi integer, ubah menit menjadi detik=============
-        // ambil waktu, pisahkan dengan tanda ":"
-        .map(function (waktu) {
-          const parts = waktu.split(":").map(function (part) {
-            // ubah datanya menjadi float (bukan string)
-            return parseFloat(part);
-          });
-          // kalikan menitnya dengan 60, dan tambahkan dengan detik
-          return parts[0] * 60 + parts[1];
-        })
-
-        // =============jumlahkan semua detik=============
-        .reduce(function (total, detik) {
-          return total + detik;
-        });
-
-      // =============ubah format jadi jam menit detik=============
-      // ubah jsLanjut yg telah menjadi detik, dibuat menjadi jam
-      const jam = Math.floor(jsLanjut / 3600);
-      // ambil sisa dari jam
-      jsLanjut = jsLanjut - jam * 3600;
-      // buat menjadi sisanya menit
-      const menit = Math.floor(jsLanjut / 60);
-      // buat sisanya menjadi detik
-      const detik = jsLanjut - menit * 60;
-
-      // =============simpat di DOM=============
-      // cari elemen yg kelasnya 'total-durasi'
-      const pDurasi = document.querySelector(".total-durasi");
-      // masukkan nilai ke dalam kelas 'total-durasi'
-      pDurasi.textContent = `${jam} Jam, ${menit} Menit, ${detik} detik`;
-      // cari berapa jumlah video yang li nya mengandung "JAVASCRIPT LANJUTAN"
-      const jmlVideo = videos.filter(function (video) {
-        return video.textContent.includes("JAVASCRIPT LANJUTAN");
-      }).length;
-      // cari elemen yg kelasnya 'jumlah-video'
-      const pJmlVideo = document.querySelector(".jumlah-video");
-      // masukkan nilai ke dalam kelas 'jumlah-video'
-      pJmlVideo.textContent = `${jmlVideo} Video`;
-
-      console.log(jsLanjut);
-      console.log(jam);
-      console.log(menit);
-      console.log(detik);
+      const str = coba`Halo, nama saya ${nama}, umur ${umur} tahun.`
+      console.log(str);
     </script>
   </body>
 </html>

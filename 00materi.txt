@@ -18,3 +18,9 @@ pada kode tersebut diatas, ketika kita memanggil method dengan pgw.sayHello(), m
 
 map (prototype of array) => menghasilkan array baru
 foreach => tidak menghasilkan array baru
+
+let result = "";
+strings.forEach ((str, i) {
+    // tanda || "" artinya jika values[i] berisi undefined, maka masukkan string kosong ""
+    result += `${str}${values[i] || ''}`
+});
