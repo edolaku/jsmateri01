@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Destructuring variable/assignment Array</title>
+  </head>
+
+  <body>
+    <script>
+      // Destructuring variable/assignment => expression pada js yang membuat kita dapat membongkar (unpacking) nilai dari array atau properti dari object ke dalam variabel yg terpisah. Contoh dengan array:
+      const coba = ["satu", "dua", "tiga"];
+      const [a, b, c] = coba;
+      console.log(a); // 'satu'
+      console.log(b); // 'dua'
+      console.log(c); // 'tiga'
+
+      // untuk menskip variabel nya dapat menggunakan seperti ini:
+      // jadi untuk coba[1] tidak didaftarkan sbg destructuring variable
+      const [satu, , tiga] = coba;
+      console.log(3); // 'tiga'
+
+      // destructuring variable juga dapat digunakan untuk menukar variabel, tapi untuk ini, penggunaan variabel jangan menggunakan const, gunakan let karena nilainya akan diubah. contoh:
+      let ab = 1;
+      let ba = 5;
+      [ab, ba] = [ba, ab];
+      console.log(ab);
+      console.log(ba);
+
+      // ===================================================
+
+      // digunakan sebagai return value pada function. jadi function mengembalikan array, dan arraynya ditangkap oleh syntax destructuring. contoh:
+      function coba2() {
+        return ["function coba 2", "array ke-1 function coba 2"];
+      }
+      const [d, e] = coba2();
+      console.log(d);
+      console.log(e);
+
+      // ===================================================
+
+      // membongkar (unpacking) nilai dari array dengan menggunakan rest parameter. contoh
+      const coba3 = [
+        "rest array1",
+        "rest array2",
+        "rest array3",
+        "rest array4",
+      ];
+      const [restArray1, ...values] = coba3;
+      console.log(restArray1);
+      console.log(values);
+    </script>
+  </body>
+</html>

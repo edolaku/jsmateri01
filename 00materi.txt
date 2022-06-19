@@ -24,3 +24,5 @@ strings.forEach ((str, i) {
     // tanda || "" artinya jika values[i] berisi undefined, maka masukkan string kosong ""
     result += `${str}${values[i] || ''}`
 });
+
+Destructuring variable/assignment => expression pada js yang membuat kita dapat membongkar (unpacking) nilai dari array atau properti dari object ke dalam variabel yg terpisah
