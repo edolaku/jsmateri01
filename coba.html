@@ -1,92 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Destructuring variable/assignment Object</title>
-  </head>
 
-  <body>
-    <script>
-      // Destructuring variable/assignment => expression pada js yang membuat kita dapat membongkar (unpacking) nilai dari array atau properti dari object ke dalam variabel yg terpisah. Contoh dengan objek:
-      const coba = {
-        varCoba1: "hasil varCoba1",
-        varCoba2: "hasil varCoba2",
-        varCoba3: "hasil varCoba3",
-      };
-      // masukkan nama variabel sesuai dengan nama properti dari objeknya
-      const { varCoba1, varCoba2, varCoba3 } = coba;
-      console.log(varCoba1); // 'hasil varCoba1'
-      console.log(varCoba2); // 'hasil varCoba2'
-      console.log(varCoba3); // 'hasil varCoba3'
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Destructuring Function</title>
+</head>
 
-      // ===================================================
+<body>
+  <script>
+    // Destructuring function => expression pada js yang membuat kita dapat membongkar (unpacking) hasil nilai array dari fungsi. Contoh:
 
-      // Dengan object, assignment juga dapat dilakukan dengan tanpa mendeklarasikan object. contoh:
-      // syaratnya pada variabel gunakan kurung buka dan tutup
-      ({ withoutDecl1, withoutDecl2 } = {
-        withoutDecl1: "hasil withoutDecl1",
-        withoutDecl2: "hasil withoutDecl2",
-      });
-      console.log(withoutDecl1);
-      console.log(withoutDecl2);
+    function kalkulasi(a, b) {
+      return [a + b, a * b, a - b, a / b];
+    }
+    //  fungsi penjumlahan adalah index ke-0 dari fungsi kalkulasi
+    const jumlah = kalkulasi(2, 3)[0]; // hasil 5, hasil dari 2 + 3
+    //  fungsi perkalian adalah index ke-1 dari fungsi kalkulasi
+    const kali = kalkulasi(2, 3)[1]; // hasil 6, hasil dari 2 * 3
+    console.log(jumlah);
+    console.log(kali);
 
-      // ===================================================
+    // kita dapat menggunakan destructuring function dan mengambil hasil dari penjumlahan dan perkalian
+    const [destrJumlah, destrKali, destrKurang, destrBagi = "tidak ada"] = kalkulasi(2,
+      3); // kita dapat memasukkan nilai default
+    console.log(destrJumlah); // hasil 5, hasil dari kalkulasi()[0] 
+    console.log(destrKali); // hasil 6, hasil dari kalkulasi()[1]
 
-      // Destructuring variable dengan assign ke variable baru
-      const cobaAssign = {
-        Assign1: "variabel baru1",
-        Assign2: "variabel baru2",
-      };
-      const { Assign1: newAssign1, Assign2: newAssign2 } = cobaAssign;
-      console.log(newAssign1);
-      console.log(newAssign2);
+    // ===================================================
 
-      // ===================================================
-
-      // Destructuring variable dengan memberikan default value
-      const cobaDefaultValue = {
-        defaultValue1: "hasil defaultValue1",
-        defaultValue2: "hasil defaultValue2",
-      };
-      const {
-        defaultValue1,
-        defaultValue2,
-        defaultValue3 = "Hasil defaultValue3 yang tidak diinisiasikan pada variabel",
-      } = cobaDefaultValue;
-      console.log(defaultValue1);
-      console.log(defaultValue2);
-      console.log(defaultValue3);
-
-      // ===================================================
-
-      // Destructuring variable dengan menggunakan rest parameter
-      const cobaRestParameter = {
-        restParameter1: "hasil restParameter1",
-        restParameter2: "hasil restParameter2",
-        restParameter3: "hasil restParameter3",
-        restParameter4: "hasil restParameter4",
-      };
-      const { restParameter1, ...restParameterValue } = cobaRestParameter;
-      console.log(restParameter1);
-      console.log(restParameterValue);
-      console.log(restParameterValue.restParameter2);
-
-      // ===================================================
-
-      // Mengambil field pada object, setelah itu object tersebuk dikirim sebagai parameter untuk function
-      const cobaField = {
-        id: 123,
-        nama: "wapek",
-        umur: 31,
-      };
-      // ambil parameter objek cobaField dengan kurung kurawal. dengan memasukkan id dan nama seperti di bawah, maka variabel nama juga dapat dipanggil
-      function getIdCobaField({ id, nama }) {
-        return id;
+    // kelemahan menggunakan array seperti diatas adalah kita bisa tertukar ketika menggunakan fungsi jumlah, kali, kurang, atau bagi. untuk meyelesaikan kelemahan tersebut, kita dapat menggunakan objek agar fungsi tidak tertukar
+    // Destructuring function object:
+    function kalkulasiObj(c, d) {
+      return {
+        destrObjTambah: c + d,
+        destrObjKurang: c - d,
+        destrObjKali: c * d,
+        destrObjBagi: c / d
       }
-      // ambil dengan memasukkan parameter objek cobaField
-      console.log(getIdCobaField(cobaField));
-    </script>
-  </body>
+    }
+    const {
+      destrObjTambah,
+      destrObjKurang,
+      destrObjKali,
+      destrObjBagi
+    } = kalkulasiObj(2, 3);
+    console.log(destrObjTambah);
+
+
+    // terakhir pada 6.2 Destructuring Function 7:36
+  </script>
+</body>
+
 </html>
