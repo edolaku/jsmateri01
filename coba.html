@@ -1,97 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Destructuring Function</title>
-  </head>
 
-  <body>
-    <script>
-      // Destructuring function => expression pada js yang membuat kita dapat membongkar (unpacking) hasil nilai array dari fungsi. Contoh:
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Destructuring Function</title>
+</head>
 
-      function kalkulasi(a, b) {
-        return [a + b, a * b, a - b, a / b];
-      }
-      // fungsi penjumlahan adalah index ke-0 dari fungsi kalkulasi
-      const jumlah = kalkulasi(2, 3)[0]; // hasil 5, hasil dari 2 + 3
-      // fungsi perkalian adalah index ke-1 dari fungsi kalkulasi
-      const kali = kalkulasi(2, 3)[1]; // hasil 6, hasil dari 2 * 3
-      console.log(jumlah);
-      console.log(kali);
+<body>
+  <script>
+    // for..of => looping yang bisa mengulang/menelusuri objek2 yg iterable
+    const forOf = ['fungsi forOf1', 'fungsi forOf2', 'fungsi forOf3']
 
-      // kita dapat menggunakan destructuring function dan mengambil hasil dari penjumlahan dan perkalian
-      const [destrJumlah, destrKali, destrKurang, destrBagi = "tidak ada"] =
-        kalkulasi(2, 3); // kita dapat memasukkan nilai default
-      console.log(destrJumlah); // hasil 5, hasil dari kalkulasi()[0]
-      console.log(destrKali); // hasil 6, hasil dari kalkulasi()[1]
+    // menggunakan for biasa:
+    for (let i = 0; i < forOf.length; i++) {
+      console.log(`hasil '${forOf[i]}' dengan "for" biasa index ke-${[i]}`);
+    }
 
-      // ===================================================
+    // menggunakan foreach, forEach tidak bisa untuk melooping string, forEach digunakan untuk melooping array
+    forOf.forEach(function (f, i) {
+      return console.log(`hasil '${f}' dengan "forEach" index ke-${i}`);
+    })
 
-      // kelemahan menggunakan array seperti diatas adalah kita bisa tertukar ketika menggunakan fungsi jumlah, kali, kurang, atau bagi. untuk meyelesaikan kelemahan tersebut, kita dapat menggunakan objek agar fungsi tidak tertukar
-      // Destructuring function object:
-      function kalkulasiObj(c, d) {
-        return {
-          destrObjTambah: c + d,
-          destrObjKurang: c - d,
-          destrObjKali: c * d,
-          destrObjBagi: c / d,
-        };
-      }
-      const { destrObjTambah, destrObjKurang, destrObjKali, destrObjBagi } =
-        kalkulasiObj(2, 3);
-      console.log(destrObjTambah);
+    // menggunakan for..of
+    for (const f of forOf) {
+      console.log(`hasil '${f}' dengan "for..of"`);
+    }
 
-      // ===================================================
+    // menggunakan for..of untuk melooping tiap2 karakter string:
+    const forOf2 = 'forOf';
+    for (const f of forOf2) {
+      console.log(f);
+    }
 
-      // Destructuring fuction arguments
 
-      // Normalnya untuk menggunakan function arguments seperti ini:
-      // const pgw = {
-      // nama: "wapek",
-      // umur: 31,
-      // email: "edolaku@gmail.com"
-      // }
+    // video terakhir no 7 7:56
+  </script>
+</body>
 
-      // function cetakPgw(nama, umur) {
-      // return `Halo, nama saya ${nama}, umur saya ${umur}`;
-      // }
-      // console.log(cetakPgw(pgw.nama, pgw.umur));
-
-      // atau Normalnya dapat menggunakan seperti ini:
-      // function cetakPgw2(pegawai, umur) {
-      // return `Halo, nama saya ${pegawai.nama}, umur saya ${pegawai.umur}`;
-      // }
-      // console.log(cetakPgw2(pgw));
-
-      // dengan menggunakan destructuring functions:
-      const destrFunc = {
-        destrFunc1: "Hasil dari destrFunc1",
-        destrFunc2: "Hasil dari destrFunc2",
-      };
-      function cetakDestrFunc({ destrFunc1, destrFunc2 }) {
-        return `Ini adalah '${destrFunc1}', dan ini adalah '${destrFunc2}'`;
-      }
-      console.log(cetakDestrFunc(destrFunc));
-
-      // destructuring functions bersarang:
-      const destrFuncBersarang = {
-        destrFuncBersarang1: "Hasil dari destrFunc1",
-        destrFuncBersarang2: "Hasil dari destrFunc2",
-        destrFuncBersarang3: {
-          sarangDestr1: "hasil dari sarangDestr1",
-          sarangDestr2: "hasil dari sarangDestr2",
-        },
-      };
-      function cetakDestrFuncBersarang({
-        destrFuncBersarang1,
-        destrFuncBersarang2,
-        destrFuncBersarang3: { sarangDestr1, sarangDestr2 },
-      }) {
-        return `Ini adalah '${destrFuncBersarang1}', ini adalah '${destrFuncBersarang2}, ini adalah '${sarangDestr1}', dan ini adalah '${sarangDestr2}'`;
-      }
-      console.log(cetakDestrFuncBersarang(destrFuncBersarang));
-    </script>
-  </body>
 </html>

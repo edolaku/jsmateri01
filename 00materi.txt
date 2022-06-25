@@ -4,7 +4,6 @@ method => serangkaian instruksi yang berkaitan dengan sebuah object
 
 this => berhubungan dan mengacu pada objek
 arrow function TIDAK menyimpan konteks this. contoh:
-
 const pgw = {
             nama: "wapek",
             jabatan: "staf",
@@ -26,3 +25,14 @@ strings.forEach ((str, i) {
 });
 
 Destructuring variable/assignment => expression pada js yang membuat kita dapat membongkar (unpacking) nilai dari array atau properti dari object ke dalam variabel yg terpisah
+
+for..of => looping yang bisa mengulang/menelusuri objek2 yg iterable;
+objek yg iterable adalah:
+- string
+- array
+- arguments/nodelist
+- typedArray
+- map
+- set
+- user-defined iterable
+#forEach tidak bisa untuk melooping string, forEach digunakan untuk melooping array
