@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>for..of</title>
+</head>
+
+<body>
+
+  <ul>
+    <li class="fungsi">Coba materi for..of (1)</li>
+    <li class="fungsi">Coba materi for..of (2)</li>
+    <li class="fungsi">Coba materi for..of (3)</li>
+  </ul>
+  <script>
+    // for..of => looping yang bisa mengulang/menelusuri objek2 yg iterable
+    const forOf = ['fungsi forOf1', 'fungsi forOf2', 'fungsi forOf3']
+
+    // menggunakan for biasa:
+    for (let i = 0; i < forOf.length; i++) {
+      console.log(`hasil '${forOf[i]}' dengan "for" biasa index ke-${[i]}`);
+    }
+
+    // menggunakan foreach, forEach tidak bisa untuk melooping string, forEach digunakan untuk melooping array
+    forOf.forEach(function (f, i) {
+      return console.log(`hasil '${f}' dengan "forEach" index ke-${i}`);
+    })
+
+    // menggunakan for..of
+    for (const f of forOf) {
+      console.log(`hasil '${f}' dengan "for..of"`);
+    }
+
+    // menggunakan for..of untuk melooping tiap2 karakter string:
+    const forOf2 = 'forOf';
+    for (const f of forOf2) {
+      console.log(f);
+    }
+
+    // menggunakan for..of untuk agar mendapatkan index dari hasil
+    // gunakan .entries() untuk memunculkan indeks, lalu destructuring dulu untuk indeksnya pada awal menginisiasi variabel; i dibawah merupakan indeks
+    for (const [i, fIndex] of forOf.entries()) {
+      console.log(`hasil for..of dengan index => ${fIndex}; indeks ke-${i}`);
+    }
+
+    // menggunakan for..of untuk nodelist:
+    const liForOf = document.querySelectorAll('.fungsi');
+
+    liForOf.forEach(function (f) { // dengan menggunakan foreach
+      console.log(f);
+    })
+
+    for (const f of liForOf) { // dengan menggunakan for..of
+      console.log(f);
+    }
+  </script>
+</body>
+
+</html>

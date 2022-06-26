@@ -36,3 +36,8 @@ objek yg iterable adalah:
 - set
 - user-defined iterable
 #forEach tidak bisa untuk melooping string, forEach digunakan untuk melooping array
+#object bukan merupakan iterable, jadi for..of tidak dapat digunakan untuk object
+
+for..in => looping yang bisa mengulang/menelusuri objek2 yg enumerable
+objek yg enumerable adalah:
+- object
