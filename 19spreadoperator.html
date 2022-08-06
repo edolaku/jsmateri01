@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Spread Operator</title>
+</head>
+
+<body>
+  <script>
+    // Spread Operator (dinotasikan dengan "...") => Memecah (expand/unpack) iterables menjadi single element
+    const spreadOp1 = ["hasil spreadOp1 1", "hasil spreadOp1 2", "hasil spreadOp1 3"];
+    // Dengan menggunakan spread operator seperti dibawah, hasilnya tidak lagi menjadi array, tp menjadi elemen2
+    console.log(...spreadOp1);
+    // memecah array spreadOp1[0]
+    console.log(...spreadOp1[0]); // hasil: "h a s i l   s p r e a d O p 1   1"
+
+    // ===================================================
+
+    // spread operator juga dapat digunakan untuk menggabungkan array:
+    const gabungSpreadOp1 = ["hasil gabungSpreadOp1 1", "hasil gabungSpreadOp1 2", "hasil gabungSpreadOp1 3"];
+    const gabungSpreadOp2 = ["hasil gabungSpreadOp2 1", "hasil gabungSpreadOp2 2", "hasil gabungSpreadOp2 3"];
+    // gabungkan gabungSpreadOp1 dan gabungSpreadOp2; jika digabungkan dengan tanpa spread operator seperti ini const gabungSpreadOp = gabungSpreadOp1, gabungSpreadOp2]; maka hasilnya akan menjadi array di dalam array
+    // dalam menggabungkan array juga sebenarnya dapat menggunakan .concat namun dengan spreadoperator kita dapat menyisipkan elemen array dengan mudah seperti contoh berikut
+    const gabungSpreadOp = [...gabungSpreadOp1, "sisip gabungSpreadOp", ...gabungSpreadOp2];
+    console.log(gabungSpreadOp);
+
+    // ===================================================
+
+    // spread operator juga dapat digunakan untuk meng-copy array:
+    const copySpreadOp1 = ["hasil copySpreadOp1 1", "hasil copySpreadOp1 2", "hasil copySpreadOp1 3"];
+    const copySpreadOp2 = [...copySpreadOp1];
+    // dengan menggunakan spreadOperator, maka indeks ke-0 yg diubah pada coding di bawah tidak akan mengubah array copySpreadOp1
+    copySpreadOp2[0] = "ubah index ke-0 copySpreadOp2";
+    console.log(copySpreadOp2);
+    // ketika meng-copy array dengan menggunakan "const copySpreadOp2 = copySpreadOp1;" itu tidak sepenuhnya mengcopy, namun hanya mereferensikan saja, jadi ketika kita akan mengubah dengan "copySpreadOp2[0] = "ubah index ke-0 copySpreadOp2";" index di dalam copySpreadOp1 juga akan berubah. seperti contoh berikut:
+    // const copySpreadOp1 = ["hasil copySpreadOp1 1", "hasil copySpreadOp1 2", "hasil copySpreadOp1 3"];
+    // const copySpreadOp2 = copySpreadOp1;
+    // copySpreadOp2[0] = "ubah index ke-0 copySpreadOp2";
+    // console.log(copySpreadOp2);
+    // index ke-0 pada copySpreadOp1 juga akan ikut berubah
+  </script>
+</body>
+
+</html>
