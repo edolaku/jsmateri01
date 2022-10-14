@@ -5,67 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Spread Operator Object HTML</title>
-  <style>
-    body {
-      background-color: salmon;
-      text-align: center;
-    }
-
-
-    .nama {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 80px;
-    }
-
-    .nama span {
-      /* ubah display ke inline-block, karena default display dari span adalah inline */
-      display: inline-block;
-      /* transition untuk hover */
-      transition: .2s;
-    }
-
-    /* agar ketika dihover ada efek */
-    .nama span:hover {
-      transform: scale(2);
-    }
-  </style>
+  <title>Asynchronous Javascript</title>
 </head>
 
 <body>
-  <ul>
-    <li>List 1</li>
-    <li>List 2</li>
-    <li>List 3</li>
-  </ul>
-
-  <h1 class="nama">Edho Paradnya Parisudha</h1>
-
-
-
   <script>
-    // Spread Operator dengan object HTML
-    // Spread Operator (dinotasikan dengan "...") => Memecah (expand/unpack) iterables menjadi single element
-    const li = document.querySelectorAll("li");
+    // Asynchronous Javascript => (callback; promise; ajax; async & await)
+    function restPara(params) {
 
-    // ubah nodelist ke array dengan menggunakan looping
-    const arrayLi = [];
-    for (let i = 0; i < li.length; i++) {
-      arrayLi.push(li[i].textContent);
     }
-    console.log(arrayLi);
-
-    // ubah nodelist ke array dengan menggunakan spreadOperator
-    const arraySpreadOp = [...li].map(m => m.textContent);
-    console.log(arraySpreadOp);
-
-    // ===================================================
-    // membuat efek pada h1
-    const nama = document.querySelector(".nama");
-    // .join digunakan agar tidak menjadi array, tetapi hanya menjadi string
-    const huruf = [...nama.textContent].map(h => `<span>${h}</span>`).join("");
-    nama.innerHTML = huruf;
-    console.log(huruf);
   </script>
 </body>
 
