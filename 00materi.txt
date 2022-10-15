@@ -1,3 +1,5 @@
+Javascript => a single-threaded, non-blocking, Asynchronous and concurrent language
+
 function => serangkaian instruksi untuk menjalankan sebuah tugas
 method => serangkaian instruksi yang berkaitan dengan sebuah object
 
@@ -41,3 +43,22 @@ objek yg iterable adalah:
 for..in => looping yang bisa mengulang/menelusuri objek2 yg enumerable
 objek yg enumerable adalah:
 - object
+ 
+
+Mengubah nodelist menjadi array // ubah nodelist ke array dengan menggunakan looping
+    const arrayLi = [];
+    for (let i = 0; i < li.length; i++) {
+      arrayLi.push(li[i].textContent);
+    }
+    console.log(arrayLi);
+
+    // ubah nodelist ke array dengan menggunakan spreadOperator
+    const arraySpreadOp = [...li].map(m => m.textContent);
+    console.log(arraySpreadOp);
+
+
+Asynchronous Javascript
+- callback => fungsi yang dikirimkan sbg parameter pada fungsi yang lain; fungsi yang dieksekusi setelah fungsi lain selesai dijalankan
+- promise
+- ajax
+- async & await
