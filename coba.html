@@ -13,6 +13,17 @@
     // Asynchronous Javascript => (callback; promise; ajax; async & await)
     // callback => fungsi yang dikirimkan sbg parameter pada fungsi yang lain; fungsi yang dieksekusi setelah fungsi lain selesai dijalankan
 
+    // Contoh synchronous callback:
+    function halo(nama) {
+      console.log(`Halo, nama saya ${nama}`);
+    }
+
+    function tampilkanPesan(i) {
+      const nama = "contoh synchronous function";
+      i(nama);
+    }
+    tampilkanPesan(halo);
+
     const pgw = [{
         "nama": "oik",
         "usia": 25
