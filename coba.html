@@ -24,19 +24,59 @@
     }
     tampilkanPesan(halo);
 
-    const pgw = [{
-        "nama": "oik",
-        "usia": 25
-      },
-      {
-        "nama": "oki",
-        "usia": 29
-      },
-      {
-        "nama": "gatot",
-        "usia": 35
+    // const pgw = [{
+    //     "nama": "oik",
+    //     "usia": 25
+    //   },
+    //   {
+    //     "nama": "oki",
+    //     "usia": 29
+    //   },
+    //   {
+    //     "nama": "gatot",
+    //     "usia": 35
+    //   }
+    // ];
+
+
+    // Contoh asynchronous callback:
+    // parameter fungsi dibawah itu ada 3, yaitu: url (tempat dimana menyimpan datanya, atau dapat diganti dg API); success(function callback ketika sukses); error (function callback ketika error)
+    function getDataPgw(url, success, error) {
+      // jalankan AJAX dan buat objek AJAX
+      let pgw = new XMLHttpRequest();
+
+      // ketika readystate sudah siap, jalankan fungsinya
+      pgw.onreadystatechange = function () {
+        // perubahan readystate adalah 0-4, dan 4 adalah sudah ready
+        if (pgw.readystate === 4) {
+          // 200 adalah ketika kita sudah dapat mengakses halaman url nya
+          if (pgw.status === 200) {
+            success(pgw.response);
+          } else if (pgw.status === 404) {
+            error();
+          }
+        }
       }
-    ];
+
+      // jalankan AJAX
+      pgw.open("get", url);
+      pgw.send();
+    }
+
+
+    // function success dan error dapat langsung dimasukkan ke dalam anonymous function
+    // function success(result) {
+    //   console.log(result);
+    // }
+
+    // function error() {
+
+    // }
+    getDataPgw('data/pgw.json', results => {
+      console.log(results);
+    }, error => {
+      console.log(error);
+    })
   </script>
 </body>
 
